@@ -33,7 +33,7 @@ function checkAuthentication() {
     }
 }
 
-// Function to handle login (this should be called after successful login)
+// Function to handle login after successful authentication
 function handleLogin(token) {
     setAuthToken(token);
     window.location.href = 'https://bello-moving-test.netlify.app'; // Redirect to home page or dashboard
@@ -54,7 +54,7 @@ async function handleSignUp(name, email, password) {
 
         if (response.ok) {
             alert('Account created successfully! Please log in.');
-            window.location.href = '/Login/login.html'; // Redirect to login page in Login folder
+            window.location.href = '/Login/login.html'; // Redirect to login page
         } else {
             console.error('Sign-up failed:', response.status, data);
             alert('Sign-up failed! Please try again.');
@@ -65,10 +65,43 @@ async function handleSignUp(name, email, password) {
     }
 }
 
+// Handle Login form submission
+document.getElementById('loginForm').addEventListener('submit', async function(event) {
+    event.preventDefault(); // Prevent form from reloading the page
+
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
+    try {
+        console.log("Attempting login with:", email); // Log for debugging
+
+        const response = await fetch('https://x8ki-letl-twmt.n7.xano.io/api:y3EvLJkm/auth/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email: email, password: password })
+        });
+
+        const data = await response.json();
+        console.log("Response:", response.status, data); // Debugging the response
+
+        if (response.ok && data.authToken) {
+            handleLogin(data.authToken); // Save token and redirect
+        } else {
+            console.error('Login failed:', response.status, data);
+            alert('Login failed! Please check your credentials and try again.');
+        }
+    } catch (error) {
+        console.error('Error during login request:', error);
+        alert('An error occurred during login. Please try again later.');
+    }
+});
+
 // Call checkAuthentication on page load
 checkAuthentication();
 
-// Event listener for page load
+// Initialize tabs and calendar after page load
 document.addEventListener("DOMContentLoaded", function() {
     openTab('Home');
     fetchNextJob();
@@ -91,6 +124,7 @@ function openTab(tabName) {
     document.getElementById(tabName).classList.add("active");
 }
 
+// Fetch the next job details
 async function fetchNextJob() {
     const endpoint = "https://x8ki-letl-twmt.n7.xano.io/api:y3EvLJkm/bookings";
     const authToken = getAuthToken();
@@ -122,6 +156,7 @@ async function fetchNextJob() {
     }
 }
 
+// Initialize calendar
 function initializeCalendar() {
     const calendarEl = document.getElementById('calendar');
     $(calendarEl).fullCalendar({
