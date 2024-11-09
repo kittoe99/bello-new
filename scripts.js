@@ -25,8 +25,8 @@ function getAuthToken() {
 // Function to check authentication on page load
 function checkAuthentication() {
     const token = getAuthToken();
-    const loginPage = '/Login/login.html';
-    const currentPage = window.location.href;
+    const loginPage = '/Login/login.html'; // Absolute path to the login page
+    const currentPage = window.location.pathname;
 
     if (!token && currentPage !== loginPage) {
         window.location.href = loginPage;
@@ -54,7 +54,7 @@ async function handleSignUp(name, email, password) {
 
         if (response.ok) {
             alert('Account created successfully! Please log in.');
-            window.location.href = 'https://bello-moving-test.netlify.app/login'; // Redirect to login page
+            window.location.href = '/Login/login.html'; // Redirect to login page in Login folder
         } else {
             console.error('Sign-up failed:', response.status, data);
             alert('Sign-up failed! Please try again.');
