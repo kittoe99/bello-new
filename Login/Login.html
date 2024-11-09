@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Sign Up Form</title>
+    <link rel="stylesheet" href="directory/styles.css">
+</head>
+<body>
+    <div class="container" id="login-container">
+        <h2>Welcome Back!</h2>
+        <p class="description">Please enter your email and password to log in to your account.</p>
+        <form id="loginForm">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <button type="submit">Login</button>
+        </form>
+        <p class="description">Don't have an account? <a class="toggle-link" id="show-signup">Sign up</a></p>
+    </div>
+
+    <div class="container" id="signup-container" style="display:none;">
+        <h2>Create an Account</h2>
+        <p class="description">Please fill in the form to create an account.</p>
+        <form id="signupForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="email-signup">Email:</label>
+            <input type="email" id="email-signup" name="email" required>
+            <label for="password-signup">Password:</label>
+            <input type="password" id="password-signup" name="password" required>
+            <button type="submit">Sign Up</button>
+        </form>
+        <p class="description">Already have an account? <a class="toggle-link" id="show-login">Login</a></p>
+    </div>
+
+    <script src="directory/scripts.js"></script>
+</body>
+</html>

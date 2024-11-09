@@ -1,0 +1,102 @@
+:root {
+    --main-bg-color: #f5f5f5;
+    --main-text-color: #343a40;
+    --highlight-color: #4caf50;
+    --font-family: 'Montserrat', sans-serif;
+    --card-bg-color: #ffffff;
+    --calendar-bg-color: #ffffff;
+    --calendar-border-color: #e0e0e0;
+    --button-color: #4caf50;
+    --button-hover-color: #388e3c;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--main-bg-color);
+    color: var(--main-text-color);
+    margin: 0;
+    padding: 0;
+}
+
+.dashboard-header {
+    background-color: var(--highlight-color);
+    padding: 20px;
+    text-align: center;
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.tab-menu {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+.tab-menu button {
+    background-color: var(--button-color);
+    border: none;
+    padding: 12px 24px;
+    cursor: pointer;
+    font-size: 17px;
+    color: white;
+    transition: background-color 0.3s;
+    border-radius: 8px;
+}
+
+.tab-menu button:hover {
+    background-color: var(--button-hover-color);
+}
+
+.tab-menu button.active {
+    background-color: #388e3c;
+}
+
+.tab-content {
+    display: none;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.booking-card {
+    background-color: var(--card-bg-color);
+    margin: 20px 0;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-left: 5px solid var(--highlight-color);
+    border-radius: 8px;
+    position: relative;
+}
+
+#calendar {
+    max-width: 100%;
+    margin: 20px auto;
+    background-color: var(--calendar-bg-color);
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid var(--calendar-border-color);
+}
+
+@media (max-width: 767px) {
+    .tab-menu {
+        gap: 10px;
+    }
+    .tab-menu button {
+        padding: 10px;
+        font-size: 14px;
+    }
+    .tab-content {
+        padding: 15px;
+    }
+}
