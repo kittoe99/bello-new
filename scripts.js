@@ -25,7 +25,7 @@ function getAuthToken() {
 // Function to check authentication on page load
 function checkAuthentication() {
     const token = getAuthToken();
-    const loginPage = 'https://bello-moving-test.netlify.app/login';
+    const loginPage = 'https://bello-moving-test.netlify.app/login.html';
     const currentPage = window.location.href;
 
     if (!token && currentPage !== loginPage) {
